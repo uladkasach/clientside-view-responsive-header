@@ -1,22 +1,27 @@
-<div class = 'header_root' style = "position:absolute; top:0; left:0; right:0; height:60px; display:flex;">
+<div class = 'header_root' style = "position:absolute; top:0; left:0; right:0; ">
     <template-holder style = 'display:none'>
-        <div class = 'header_element' style = 'display:flex;'>
-            <div class = 'header_element_content_holder' style = 'margin:auto;'></div>
-        </div>
-        <a class = 'header_element header_button' style = 'display:flex;'>
-            <div style = 'margin:auto; display:flex;'>
-                <div class = 'header_element_dropdown_arrow' style = 'display:none;'> <!-- programatically changes to `display:flex;` when elements for dropdown exist -->
-                    <div style = 'margin:auto 0px; padding-right:7px;'>
+        <div class = 'header_element' style = 'position:relative;'></div>
+        <a class = 'header_button' style = 'display:flex; flex:1; height:100%;'>
+            <div style = 'margin:auto 0; display:flex; padding:0px 10px;'>
+                <div class='header_element_dropdown_arrow' style = 'display:none;'> <!-- programatically changes to `display:flex;` when elements for dropdown exist -->
+                    <div class='header_element_dropdown_arrow-overwrite' style = 'margin:auto 0px; padding-right:7px;'>
                         <arrow class='down'></arrow>
                     </div>
                 </div>
                 <div style = 'margin:auto 0px; display:flex;'>
-                    <div style = 'display:flex;'>
+                    <div style = 'display:flex; padding:5px;'>
                         <div class = 'header_element_content_holder' style = 'margin:auto;'></div>
                     </div>
                 </div>
             </div>
         </a>
+        <div class = 'header_dropdown' style = ''>
+            <div class = 'header_dropdown-padder'></div>
+            <div class = 'header_dropdown-content' style = 'flex:1; position:relative;'></div>
+        </div>
+        <div class = 'header_dividing_line_element' style = 'width:100%; display:flex;'>
+            <div class = 'header_dividing_line_element-color' style = 'width:90%; margin:auto;'></div>
+        </div>
     </template-holder>
     <div style = 'max-width:1980px; margin:auto; flex:1; position:relative; display:flex; '>
         <div class = 'header_side header_side-left' style = 'display:flex; '>
