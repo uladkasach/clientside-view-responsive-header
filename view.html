@@ -1,12 +1,28 @@
-<div style = 'position:absolute; top:0; left:0; right:0; height:60px; background-color:black; color:white; font-size:14px; font-weight:bold; display:flex;'>
+<div class = 'header_root' style = "position:absolute; top:0; left:0; right:0; height:60px; display:flex;">
     <template-holder style = 'display:none'>
-        <div class = 'header_element' style = ''></div>
-        <a class = 'header_element' style = ''></a>
-    </template-holder>
-    <div style = 'max-width:1200px; margin:auto; flex:1;'>
-        <div class = 'header_side header_side-left' style = 'display:flex;'>
+        <div class = 'header_element' style = 'display:flex;'>
+            <div class = 'header_element_content_holder' style = 'margin:auto;'></div>
         </div>
-        <div class = 'header_side header_side-right' style = 'display:flex; content-justify:right;'>
+        <a class = 'header_element header_button' style = 'display:flex;'>
+            <div style = 'margin:auto; display:flex;'>
+                <div class = 'header_element_dropdown_arrow' style = 'display:none;'> <!-- programatically changes to `display:flex;` when elements for dropdown exist -->
+                    <div style = 'margin:auto 0px; padding-right:7px;'>
+                        <arrow class='down'></arrow>
+                    </div>
+                </div>
+                <div style = 'margin:auto 0px; display:flex;'>
+                    <div style = 'display:flex;'>
+                        <div class = 'header_element_content_holder' style = 'margin:auto;'></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </template-holder>
+    <div style = 'max-width:1980px; margin:auto; flex:1; position:relative; display:flex; '>
+        <div class = 'header_side header_side-left' style = 'display:flex; '>
+        </div>
+        <div class = 'header_side header_side-right' style = 'display:flex; '>
+            <div style = 'margin:auto;'></div> <!-- push rest of elements to right end -->
         </div>
     </div>
 </div>

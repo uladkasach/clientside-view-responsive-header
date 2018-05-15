@@ -28,20 +28,29 @@ module.exports = {
         })
     },
     convert_structure_to_element : function(structure){
-        // genereate basic element
+        // evaluate structure
+        var dropdown_requested = Array.isArray(structure.elements) && structure.elements.length > 0;
+
+        // define elements in template
         var header_element = (typeof structure.src == "string")? template.header_element.anchor : template.header_element.basic; // if src is defined, use anchor element
         var this_element = header_element.cloneNode(true);
-
-        // attach title if defined
-        if(typeof structure.title == "string") this_element.textContent = structure.title;
-
-        // insert html if defined
-        if(typeof structure.html == "string") this_element.innerHTML = structure.html;
+        var content_holder = this_element.querySelector(".header_element_content_holder");
+        var dropdown_arrow = this_element.querySelector(".header_element_dropdown_arrow");
+        var dropdown_holder = this_element.querySelector(".header_element_dropdown_holder");
 
         // attach src
         if(typeof structure.src == "string") this_element.href = structure.src;
 
-        // TODO - append dropdown
+        // attach title if defined
+        if(typeof structure.title == "string") content_holder.textContent = structure.title;
+
+        // insert html if defined
+        if(typeof structure.html == "string") content_holder.innerHTML = structure.html;
+
+        // display dropdown arrow if dropdown requested
+        if(dropdown_requested) dropdown_arrow.style.display="flex";
+
+        // build and attach dropdown if requested (recursive structure to support multilayer dropdown)
 
         // return built element
         return this_element;

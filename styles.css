@@ -1,6 +1,10 @@
-.header_button:hover{
-    cursor:pointer;
-    background-color:rgba(0, 0, 0, 0.2);
+@import url('https://fonts.googleapis.com/css?family=Exo:200');
+
+
+.header_root{
+    font-family: 'Exo', sans-serif;
+    background-color: #424242; /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+    color:white; font-size:14px;
 }
 
 .home_button:hover img {
@@ -11,4 +15,40 @@
 	0% {transform:rotate(4deg);}
 	50% {transform:rotate(-4deg);}
 	100% {transform:rotate(4deg);}
+}
+
+
+.header_element {
+    flex:1;
+    max-width:200px;
+    min-width:150px;
+    text-align:center;
+    padding:10px 0px;
+}
+.header_button:hover{ /* used for anchor seperately */
+    cursor:pointer;
+    background-color:rgba(251, 247, 247, 0.1);
+}
+a.header_button{ /* remove default anchor styles */
+    color:inherit;
+    text-decoration:inherit;
+}
+
+.header_side{
+    height:100%;
+    flex:1;
+}
+
+
+/* arrow */
+arrow {
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+}
+arrow.down {
+    margin-top:-3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
