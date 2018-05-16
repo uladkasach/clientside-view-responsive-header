@@ -1,0 +1,219 @@
+{
+    "left" : [
+        {
+            "html" : "<div style = 'display:flex'><div style = 'margin:auto; display:flex;'><div style = 'margin:auto 0px; '><img height='40px' src = '/_views/global/header/logo_gold_darker.png'></div><div style = 'width:10px;'></div><div style = 'margin:auto 0px;'><span style = 'font-size:21px; font-weight:bold; color:#2196F3;'><span style = 'color:#FBC02D'>V</span>LAZOO</span></div>",
+            "no_hover" : true
+        }
+    ],
+    "right" : [
+        {
+            "html" : "Dashboard",
+            "src" : "/Dashboard.aspx"
+        },
+        {
+            "html" : "<b>Create Listing</b>",
+            "src" : "/StockInventory.aspx"
+        },
+        {
+            "title" : "Shipping",
+            "src" : "/Shipping.aspx",
+            "elements" : [
+                {
+                    "title" : "Shipping Assignments",
+                    "src" : "/ShippingAssignments.aspx"
+                },
+                {
+                    "title" : "Print Postage",
+                    "src" : "/LabelCreate.aspx"
+                }
+            ]
+        },
+        {
+            "title" : "Inventory",
+            "elements" : [
+                {
+                    "title" : "Inventory Update",
+                    "src" : "/InventoryManager.aspx"
+                },
+                {
+                    "title" : "Products / Schedule",
+                    "src" : "/Products.aspx"
+                },
+                {
+                    "title" : "Product Catalog",
+                    "src" : "/ProductInventory.aspx"
+                },
+                {
+                    "title" : "Warehouse Scan",
+                    "src" : "/ShipmentView.aspx?h=off"
+                },
+                {
+                    "title" : "Quick Search",
+                    "src" : "/StockUPC.aspx?h=off"
+                },
+                "line",
+                {
+                    "title" : "Location List / Create",
+                    "src" : "/LocationList.aspx"
+                },
+                {
+                    "title" : "Assign Item Location",
+                    "src" : "/LocationAssign.aspx?h=off"
+                },
+                {
+                    "title" : "eBay Promotional Sale",
+                    "src" : "/EBayPromotion.aspx"
+                }
+            ]
+        },
+        {
+            "html" : "Messages ( <span id = 'messages_count'>**</span> )",
+            "src" : "/Messages.aspx",
+            "elements" : [
+                {
+                    "html" : "Tasks ( <span id = 'tasks_count'>**</span> )",
+                    "src" : "/Tasks.aspx"
+                }
+            ]
+        },
+        {
+            "title" : "Time Clock",
+            "src" : "/TimeClock.aspx?h=off",
+            "elements" : [
+                {
+                    "title" : "Time Clock Settings",
+                    "src" : "/Settings-tc.aspx"
+                },
+                {
+                    "title" : "Time Clock Settings",
+                    "src" : "/Settings-tc.aspx"
+                },
+                {
+                    "title" : "Time Clock Messages",
+                    "src" : "/Tasks.aspx?t=msg"
+                }
+            ]
+        },
+        {
+            "title" : "Reports",
+            "elements" : [
+                {
+                    "title" : "Time Clock Report",
+                    "src" : "/TimeClockReport.aspx"
+                },
+                {
+                    "title" : "Fees Report",
+                    "src" : "/ReportFee.aspx"
+                },
+                {
+                    "title" : "Defect Report",
+                    "src" : "/DefectTracking.aspx"
+                },
+                {
+                    "title" : "Item Create Report",
+                    "src" : "/ReportListings.aspx"
+                }
+            ]
+        },
+        {
+            "title" : "Settings",
+            "elements" : [
+                {
+                    "title" : "Profile",
+                    "src" : "/Profile.aspx"
+                },
+                {
+                    "title" : "System",
+                    "src" : "/Settings1.aspx"
+                },
+                {
+                    "title" : "Clients",
+                    "src" : "/Settings2.aspx"
+                },
+                {
+                    "title" : "Users",
+                    "src" : "/Settings3.aspx"
+                },
+                {
+                    "title" : "Shipping",
+                    "elements" : [
+                        {
+                            "title" : "FedEx Settings",
+                            "src" : "/Settings4b.aspx"
+                        },
+                        {
+                            "title" : "USPS Settings",
+                            "src" : "/Settings4a.aspx"
+                        },
+                        {
+                            "title" : "UPS Settings",
+                            "src" : "/Settings5.aspx"
+                        }
+                    ]
+                },
+                {
+                    "title" : "eBay",
+                    "elements" : [
+                        {
+                            "title" : "Account",
+                            "src" : "/Settings6.aspx"
+                        },
+                        {
+                            "title" : "Sites",
+                            "src" : "/Settings7.aspx"
+                        },
+                        {
+                            "title" : "Shipping Services",
+                            "src" : "/Settings8.aspx"
+                        },
+                        {
+                            "title" : "Store Catagories",
+                            "src" : "/Settings11.aspx"
+                        }
+                    ]
+                },
+                {
+                    "title" : "Templates",
+                    "elements" : [
+                        {
+                            "title" : "Main Templates",
+                            "src" : "/Templates.aspx"
+                        },
+                        {
+                            "title" : "Description Line Titles",
+                            "src" : "/Settings9.aspx"
+                        },
+                        {
+                            "title" : "Return Reasons",
+                            "src" : "/Settings10.aspx"
+                        },
+                        {
+                            "title" : "Message Templates",
+                            "src" : "/Settings12.aspx"
+                        },
+                        {
+                            "title" : "HTML Templates",
+                            "src" : "/Settings13.aspx"
+                        },
+                        {
+                            "title" : "Image Templates",
+                            "src" : "/Settings14.aspx"
+                        }
+                    ]
+                },
+                {
+                    "title" : "My Colors",
+                    "src" : "/Settings15.aspx"
+                },
+                {
+                    "title" : "Download Printing Applications",
+                    "src" : "/Attachments/PrintLabels.zip"
+                }
+            ]
+        },
+        {
+            "html" : "Logout",
+            "src" : "/Login.aspx?act=logout"
+        }
+    ]
+}

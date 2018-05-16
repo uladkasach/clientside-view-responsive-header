@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Responsive Header Demo</title>
+        <script src = '/node_modules/clientside-require/dist/bundle.js'></script>
+    </head>
+    <body>
+        <script>
+            load("./init/header/index.js")
+                .then((dom)=>{
+                    console.log(dom);
+                    window.target_element = dom;
+                    document.querySelector("html").appendChild(dom);
+                })
+        </script>
+    </body>
+</html>
