@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "clientside-require": "^4.3.0"
+    "clientside-require": "^4.3.0",
+    "clientside-view-responsive-header": "^1.0.0"
   }
 }
