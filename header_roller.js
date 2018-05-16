@@ -40,9 +40,13 @@ Header_Roller.prototype = {
         var unwrapped_elements = this.all_elements.slice(0, elements_to_unwrap);
         var wrapped_elements = this.all_elements.slice(elements_to_unwrap);
         unwrapped_elements.forEach((element)=>{
+            var dropdown_for_this_element = element.querySelector(".header_dropdown");
+            if(dropdown_for_this_element != null) dropdown_for_this_element.style.display=null; // remove open, close styling set by dropdown handler and let it work on hover
             this.holders.content.appendChild(element);
         })
         wrapped_elements.forEach((element)=>{
+            var dropdown_for_this_element = element.querySelector(".header_dropdown");
+            if(dropdown_for_this_element != null) dropdown_for_this_element.handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (becomes wrapped)
             this.holders.menu_dropdown.appendChild(element);
         })
 

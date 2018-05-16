@@ -40,6 +40,14 @@
     display:none; /* dont show the subdropdown arrows */
 }
 
+/* hide the expand button untill it is already nested in atleast one dropdown */
+.header_element .header_element_dropdown_expand-overwrite {
+    display:none; /* show only if nested */
+}
+.header_element .header_element .header_element_dropdown_expand-overwrite {
+    display:block; /* show only if nested */
+}
+
 
 /* style elements */
 .header_element {
@@ -60,6 +68,10 @@
 }
 .header_element:not(.header_element_no_hover):hover {
     background-color:rgba(251, 247, 247, 0.1);
+}
+.header_element_expand_button:hover {
+    background-color:rgba(251, 247, 247, 0.1);
+    cursor: pointer;
 }
 
 

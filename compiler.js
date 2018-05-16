@@ -1,5 +1,6 @@
 require("./styles.css");
 var Header_Roller = require("./header_roller");
+var Dropdown_Handler = require("./dropdown_handler");
 var template = {};
 
 module.exports = {
@@ -27,6 +28,8 @@ module.exports = {
 
         // append the menu element to the right part
         var menu_element = this.convert_element_structure({title:"More", elements:[]});
+        menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
+        menu_element.querySelector(".header_dropdown").style.display=null; // remove dropdown_handler display/hide and let it work on hover as by default
         right_part.appendChild(menu_element);
 
         // append the listener for width changes to update the header
@@ -71,13 +74,17 @@ module.exports = {
         element.appendChild(button); // append to DOM
         var content_holder = button.querySelector(".header_element_content_holder");
         var dropdown_arrow = button.querySelector(".header_element_dropdown_arrow");
+        var dropdown_expander = button.querySelector(".header_element_dropdown_expand");
         if(typeof structure.src == "string"){ // attach src
             button.href = structure.src;
             button.classList.add("header-clickable_button");
         }
         if(typeof structure.title == "string") content_holder.textContent = structure.title; // attach title if defined
         if(typeof structure.html == "string") content_holder.innerHTML = structure.html; // insert html if defined
-        if(dropdown_requested) dropdown_arrow.style.display="flex"; // display dropdown arrow if dropdown requested
+        if(dropdown_requested){
+            dropdown_arrow.style.display="flex"; // display dropdown arrow if dropdown requested (hidden by styles.css depending on nesting)
+            dropdown_expander.style.display="flex"; // display dropdown expander if dropdown is requested (hidden by styles.css depending on nesting)
+        }
 
         /*
             build and attach dropdown if requested (recursive);
@@ -91,6 +98,21 @@ module.exports = {
                 var dropdown_element = this.convert_structure_to_element(element_structure);
                 dropdown.appendChild(dropdown_element);
             })
+        }
+
+        /*
+            attach dropdown handler
+                - opens and closes dropdown when dropdown expander is pressed
+                - only relevent in nested dropdowns
+        */
+        if(dropdown_requested){
+            var dropdown_handler = new Dropdown_Handler(dropdown_expander, dropdown);
+            dropdown_expander.onclick = function(event){
+                dropdown_handler.toggle();
+                event.preventDefault(); // prevent anchor action from firing
+            }
+            dropdown_handler.hide_dropdown(); // default view to hidden
+            dropdown.handler = dropdown_handler; // append the handler to the dropdown DOM object
         }
 
         // return built element
