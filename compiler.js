@@ -1,7 +1,6 @@
 require("./styles.css");
-var template = {};
-var max_width = 200;
 var Header_Roller = require("./header_roller");
+var template = {};
 
 module.exports = {
     generate : function(dom, options){
@@ -31,8 +30,8 @@ module.exports = {
         right_part.appendChild(menu_element);
 
         // append the listener for width changes to update the header
-        var header_roller = new Header_Roller(right_elements, 200, right_part, menu_element);
-        header_roller.unwrap_only_x_elements(2);
+        var header_roller = new Header_Roller(right_elements, 160, right_part, menu_element, left_part);
+        header_roller.listen();
         dom.header_roller = header_roller;
         //this.attach_listener(right_part, right_elements, menu_element);
 

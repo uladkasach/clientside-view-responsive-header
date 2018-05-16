@@ -21,7 +21,7 @@
 .header_dropdown {
     display:none;
     background-color: #616161; /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
-    position:absolute; 
+    position:absolute;
 }
 .header_element:hover .header_dropdown{
     display:flex;
@@ -44,7 +44,7 @@
 /* style elements */
 .header_element {
     flex:1;
-    max-width:200px;
+    max-width:180px;
     min-width:160px;
     text-align:left;
 }
@@ -76,7 +76,6 @@ a.header_button{ /* remove default anchor styles */
 }
 .header_side{
     height:100%;
-    flex:1;
 }
 
 
