@@ -1,7 +1,7 @@
 {
     "left" : [
         {
-            "html" : "<div style = 'display:flex'><div style = 'margin:auto; display:flex;'><div style = 'margin:auto 0px; '><img height='40px' src = '/src/init/header/logo_gold_darker.png'></div><div style = 'width:10px;'></div><div style = 'margin:auto 0px;'><span style = 'font-size:21px; font-weight:bold; color:#2196F3;'><span style = 'color:#FBC02D'>V</span>LAZOO</span></div>",
+            "html" : "<div style = 'display:flex'><div style = 'margin:auto; display:flex;'><div style = 'margin:auto 0px; '><img height='40px' src = '/src/init/complex_header/logo_gold_darker.png'></div><div style = 'width:10px;'></div><div style = 'margin:auto 0px;'><span style = 'font-size:21px; font-weight:bold; color:#2196F3;'><span style = 'color:#FBC02D'>V</span>LAZOO</span></div>",
             "no_hover" : true
         }
     ],

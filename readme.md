@@ -11,7 +11,13 @@ The header expects a structured JSON object to be passed to it, from which it wi
 the following JSON:
 ```
 {
-    "left" : [],
+    "left" : [
+        {
+            "description" : "go to home page",
+            "html" : "<img height='40px' src = '/path/to/logo.png'>",
+            "src" : "/path/to/home.html"
+        }
+    ],
     "right" : [
         {
             "title" : "Blog",
@@ -20,15 +26,14 @@ the following JSON:
         {
             "html" : "<b>Login</b>",
             "src" : "/path/to/loginpage.html"
-        },
-        {
-            "html" : "<img src = '/path/to/cart_icon.png'> Cart",
-            "src" : "/path/to/cart.html"
         }
     ]
 }
+
 ```  
 creates this result:
+![screenshot_2018-05-16_13-38-24](https://user-images.githubusercontent.com/10381896/40133676-703cd4fa-590e-11e8-9571-a81ed00d314d.png)
+
 
 ### more examples
 please see the `demo` directory for more examples and usage documentation
