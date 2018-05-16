@@ -21,19 +21,20 @@
 .header_dropdown {
     display:none;
     background-color: #616161; /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
-    position:absolute; min-width:100%;
+    position:absolute; 
 }
 .header_element:hover .header_dropdown{
     display:flex;
+    flex-flow: column;
 }
 
 /* nested dropdown */
 .header_element .header_element .header_dropdown{ /* if dropdown is nested under two elements, dont fold down and always show */
     position:relative;
-    display:flex;
+    display:block;
 }
-.header_element .header_element .header_dropdown .header_dropdown-padder{
-    width:15px;
+.header_element .header_element .header_dropdown{
+    padding-left:15px;
 }
 .header_element .header_element .header_element_dropdown_arrow-overwrite {
     display:none; /* dont show the subdropdown arrows */
