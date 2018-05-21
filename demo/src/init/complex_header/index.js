@@ -1,8 +1,7 @@
 var view_loader = require("clientside-view-loader");
-var header_structure = require("./header_structure.json");
 module.exports = (async function(){
     var build_options = {
-        structure : header_structure,
+        structure : require("./header_structure.json"),
         style : {
             element_min_width : 180,
             element_min_width : 140

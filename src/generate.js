@@ -54,15 +54,16 @@ var generator = {
         if(typeof options.style.element_min_width == "string") options.style.element_min_width = parseInt(options.style.element_min_width);
         if(typeof options.style.element_max_width == "number") template.header_element.style.maxWidth = options.style.element_max_width + "px";
         if(typeof options.style.element_min_width == "number") template.header_element.style.minWidth = options.style.element_min_width + "px";
-        template.header_element.style.backgroundColor = style_defaults.background_color.element;
+        // note that if we change backgroudn color of header_element we must also consider the hover color change.
 
         /*
             change style of header_root dom based on select options
         */
         // define the opacity of the background
-        var header_background_opacity = (typeof options.style.opacity == "number")?options.style.opacity : 1;// default to 1
-        var rgba_color = hex_to_rgb(style_defaults.background_color.root, header_background_opacity);
-        dom.style.backgroundColor = rgba_color;
+        if(typeof options.style.opacity == "number"){
+            var rgba_color = hex_to_rgb(style_defaults.background_color.root, options.style.opacity);
+            dom.style.backgroundColor = rgba_color;
+        }
 
         // let user change background color completely
         if(typeof options.style.background_color == "string") dom.style.backgroundColor = options.style.background_color;
