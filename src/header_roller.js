@@ -1,5 +1,3 @@
-var root_document = window.root_window.document; // since we're in an iframe provisioned by clientside-require, we dont have access to the original document
-
 var Header_Roller = function(all_elements, width_per_element, content_holder, menu_element, alternative_holder){
     this.all_elements = all_elements;
     this.menu_element = menu_element;
@@ -9,23 +7,28 @@ var Header_Roller = function(all_elements, width_per_element, content_holder, me
         content : content_holder,
         menu_dropdown : menu_element.querySelector(".header_dropdown"),
     };
+    this.target_window = window.root_window; // by default its the root document
 }
 Header_Roller.prototype = {
-    listen : function(){ //attack listener
-        root_window.addEventListener('resize', (event)=>{ // add on resize listener
+    listen : function(){ //attach listener
+        this.target_window.addEventListener('resize', (event)=>{ // add on resize listener
             this.update_header_wrapping();
         });
-        root_window.addEventListener("load", (event)=>{ // add onload resizer
+        this.target_window.addEventListener("load", (event)=>{ // add onload resizer
             this.update_header_wrapping();
         });
         this.update_header_wrapping(); // and update now
+    },
+    define_target_window : function(target_window){
+        this.target_window = target_window;
+        this.listen();
     },
     update_header_wrapping : function(){
         var elements_to_unwrap = this.determine_elements_to_unwrap();
         this.unwrap_only_x_elements(elements_to_unwrap);
     },
     determine_elements_to_unwrap : function(){
-        var browser_width = root_document.documentElement.clientWidth;
+        var browser_width = this.target_window.document.documentElement.clientWidth;
         var alternative_width = this.holders.alternative.clientWidth;
         if(alternative_width == 0) alternative_width = this.holders.alternative.querySelectorAll(".header_element").length * this.width_per_element; // if not rendered yet, just approximate
         var availible_width = browser_width - alternative_width;
