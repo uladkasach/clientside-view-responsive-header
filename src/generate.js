@@ -165,8 +165,10 @@ var generator = {
         /*
             manipulate style based on structure specific style options
         */
-        if(typeof structure.max_width == "string") element.style.maxWidth = structure.max_width;
-        if(typeof structure.min_width == "string") element.style.minWidth = structure.min_width;
+        if(typeof structure.max_width == "string") structure.max_width = parseInt(structure.max_width);
+        if(typeof structure.min_width == "string") structure.min_width = parseInt(structure.min_width);
+        if(typeof structure.max_width == "number") element.style.maxWidth = structure.max_width + "px";
+        if(typeof structure.min_width == "number") element.style.minWidth = structure.min_width + "px";
 
 
         // return built element
