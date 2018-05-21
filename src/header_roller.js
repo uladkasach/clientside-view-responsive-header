@@ -31,6 +31,7 @@ Header_Roller.prototype = {
         var availible_width = browser_width - alternative_width;
         var elements_supportable = Math.floor(availible_width/this.width_per_element);
         var element_space_availible = elements_supportable - 1; // -1 for the "More"/"Menu" element
+        if(element_space_availible < 0) element_space_availible = 0;
         return element_space_availible;
     },
     unwrap_only_x_elements : function(elements_to_unwrap){
