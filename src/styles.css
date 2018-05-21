@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:200');
-
-
 .header_root{
-    font-family: 'Exo', sans-serif;
     color:white; font-size:14px;
 }
 .home_button:hover img {

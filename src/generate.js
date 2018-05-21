@@ -24,6 +24,7 @@ var generator = {
         // normalize options
         if(typeof options.structure == "undefined" && typeof options == "object") options = {structure:options}; // assume that if structure is not defined in options that all of options is just structure
         if(typeof options.structure == "undefined") throw new Error("options must be defined");
+        if(typeof options.style == "undefined") options.style = {};
 
         // header parts
         var left_part = dom.querySelector(".header_side-left");
@@ -47,11 +48,11 @@ var generator = {
             render elements
         */
         // append elements to each part
-        this.append_elements(left_part, options.structure.left);
-        this.append_elements(right_part, options.structure.right);
+        this.append_elements(left_part, options.structure.left, options.style);
+        this.append_elements(right_part, options.structure.right, options.style);
 
         // append the menu element to the right part
-        var menu_element = this.convert_element_structure({title:"More", elements:[]});
+        var menu_element = this.convert_element_structure({title:"More", elements:[]}, options.style);
         menu_element.classList.add('header_menu_element');
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
         right_part.appendChild(menu_element);
@@ -70,23 +71,28 @@ var generator = {
         if(typeof options.style.backgroundColor == "string") dom.style.backgroundColor = options.style.backgroundColor;
 
         // let user modify height of header
-        var header_height = (typeof options.style.height)? options.style.height : style_defaults.height;
+        var header_height = (typeof options.style.height == "string")? options.style.height : style_defaults.height;
         dom.style.height = header_height;
+
+        // font
+        if(typeof options.style.font_weight == "string") dom.style.fontWeight = options.style.font_weight;
+        if(typeof options.style.font_size == "string") dom.style.fontSize = options.style.font_size;
 
         // return DOM
         return dom;
     },
-    append_elements : function(parent_node, elements_outline){
+    append_elements : function(parent_node, elements_outline, style_options){
         elements_outline.forEach(element_structure=>{
-            var element = this.convert_structure_to_element(element_structure);
+            var element = this.convert_structure_to_element(element_structure, style_options);
             parent_node.appendChild(element);
         })
     },
-    convert_structure_to_element : function(structure){
-        if(typeof structure == "object") return this.convert_element_structure(structure);
-        if(typeof structure == "string") return this.convert_basic_structure(structure);
+    convert_structure_to_element : function(structure, style_options){
+
+        if(typeof structure == "object") return this.convert_element_structure(structure, style_options);
+        if(typeof structure == "string") return this.convert_basic_structure(structure, style_options);
     },
-    convert_basic_structure : function(identifier){
+    convert_basic_structure : function(identifier, style_options){
         /*
             if it is a valid basic structure, generate it
         */
@@ -96,9 +102,9 @@ var generator = {
         /*
             otherwise, asume they just wanted the "text" property to be the identifier
         */
-        return this.convert_element_structure({text:identifier});
+        return this.convert_element_structure({text:identifier}, style_options);
     },
-    convert_element_structure : function(structure){
+    convert_element_structure : function(structure, style_options){
         // evaluate structure
         var dropdown_requested = Array.isArray(structure.elements);
 
@@ -141,6 +147,18 @@ var generator = {
                 dropdown.appendChild(dropdown_element);
             })
         }
+
+        /*
+            manipulate style based on user options globally
+        */
+        if(typeof style_options.element_max_width == "string") element.style.maxWidth = style_options.element_max_width;
+        if(typeof style_options.element_min_width == "string") element.style.minWidth = style_options.element_min_width;
+
+        /*
+            manipulate style based on structure specific style options
+        */
+        if(typeof structure.max_width == "string") element.style.maxWidth = structure.max_width;
+        if(typeof structure.min_width == "string") element.style.minWidth = structure.min_width;
 
         // return built element
         return element;
