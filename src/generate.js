@@ -1,13 +1,14 @@
 require("./styles.css");
-var Header_Roller = require("./header_roller");
-var Dropdown_Handler = require("./dropdown_handler");
 var template = {};
 
-module.exports = {
+/*
+    define generator
+*/
+var generator = {
     generate : function(dom, options){
         // header parts
-        var right_part = dom.querySelector(".header_side-right");
         var left_part = dom.querySelector(".header_side-left");
+        var right_part = dom.querySelector(".header_side-right");
 
         // template elements
         var template_dom = dom.querySelector("template-holder");
@@ -23,32 +24,24 @@ module.exports = {
         }
 
         // append elements to each part
-        var left_elements = this.append_elements(left_part, options.left);
-        var right_elements = this.append_elements(right_part, options.right);
+        this.append_elements(left_part, options.left);
+        this.append_elements(right_part, options.right);
 
         // append the menu element to the right part
         var menu_element = this.convert_element_structure({title:"More", elements:[]});
+        menu_element.className = 'header_menu_element';
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
         menu_element.querySelector(".header_dropdown").style.display=null; // remove dropdown_handler display/hide and let it work on hover as by default
         right_part.appendChild(menu_element);
-
-        // append the listener for width changes to update the header
-        var header_roller = new Header_Roller(right_elements, 160, right_part, menu_element, left_part);
-        header_roller.listen();
-        dom.header_roller = header_roller;
-        //this.attach_listener(right_part, right_elements, menu_element);
 
         // return DOM
         return dom;
     },
     append_elements : function(parent_node, elements_outline){
-        var elements = [];
         elements_outline.forEach(element_structure=>{
             var element = this.convert_structure_to_element(element_structure);
-            elements.push(element);
             parent_node.appendChild(element);
         })
-        return elements;
     },
     convert_structure_to_element : function(structure){
         if(typeof structure == "object") return this.convert_element_structure(structure);
@@ -100,22 +93,12 @@ module.exports = {
             })
         }
 
-        /*
-            attach dropdown handler
-                - opens and closes dropdown when dropdown expander is pressed
-                - only relevent in nested dropdowns
-        */
-        if(dropdown_requested){
-            var dropdown_handler = new Dropdown_Handler(dropdown_expander, dropdown);
-            dropdown_expander.onclick = function(event){
-                dropdown_handler.toggle();
-                event.preventDefault(); // prevent anchor action from firing
-            }
-            dropdown_handler.hide_dropdown(); // default view to hidden
-            dropdown.handler = dropdown_handler; // append the handler to the dropdown DOM object
-        }
-
         // return built element
         return element;
     },
 }
+
+/*
+    return the bound generate function
+*/
+module.exports = generator.generate.bind(generator);

@@ -1,4 +1,5 @@
 process.env.src_root = __dirname + "/../src";
+process.env.node_modules_root = __dirname + "/../node_modules";
 process.env.test_env_root = __dirname + "/_env"
 
 /*
@@ -23,19 +24,21 @@ window.XMLHttpRequest = xmlhttprequest.XMLHttpRequest; // append XMLHttpRequest 
 /*
     load the clientside_require module
 */
+window.node_modules_root = process.env.node_modules_root;
 require("clientside-require"); // initializes clientside_require into the `window` global object
-
 
 /*
     begin testing
 */
 describe('basic', function(){
-    it('should initialize', function(){
-        require(process.env.src_root + "/compiler.js");
-    })
     it('should be loadable with clientside_require', async function(){
-        var view_loader_path = process.env.src_root + "/compiler.js";
-        var view_loader = await window.clientside_require.asynchronous_require(view_loader_path);
+        var view_loader = await window.clientside_require.asynchronous_require("clientside-view-loader");
+        var build = await view_loader.load(process.env.src_root);
+    })
+    it('should be buildable', async function(){
+        var view_loader = await window.clientside_require.asynchronous_require("clientside-view-loader");
+        var build = await view_loader.load(process.env.src_root);
+        var dom = await build({left:[{"title":"test", "elements":[{"title":"test"}]}], right:[]});
     })
 })
 describe('dropdown_handler', function(){
