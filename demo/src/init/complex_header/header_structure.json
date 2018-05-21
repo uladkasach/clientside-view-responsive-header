@@ -15,53 +15,53 @@
             "src" : "/StockInventory.aspx"
         },
         {
-            "title" : "Shipping",
+            "text" : "Shipping",
             "src" : "/Shipping.aspx",
             "elements" : [
                 {
-                    "title" : "Shipping Assignments",
+                    "text" : "Shipping Assignments",
                     "src" : "/ShippingAssignments.aspx"
                 },
                 {
-                    "title" : "Print Postage",
+                    "text" : "Print Postage",
                     "src" : "/LabelCreate.aspx"
                 }
             ]
         },
         {
-            "title" : "Inventory",
+            "text" : "Inventory",
             "elements" : [
                 {
-                    "title" : "Inventory Update",
+                    "text" : "Inventory Update",
                     "src" : "/InventoryManager.aspx"
                 },
                 {
-                    "title" : "Products / Schedule",
+                    "text" : "Products / Schedule",
                     "src" : "/Products.aspx"
                 },
                 {
-                    "title" : "Product Catalog",
+                    "text" : "Product Catalog",
                     "src" : "/ProductInventory.aspx"
                 },
                 {
-                    "title" : "Warehouse Scan",
+                    "text" : "Warehouse Scan",
                     "src" : "/ShipmentView.aspx?h=off"
                 },
                 {
-                    "title" : "Quick Search",
+                    "text" : "Quick Search",
                     "src" : "/StockUPC.aspx?h=off"
                 },
                 "line",
                 {
-                    "title" : "Location List / Create",
+                    "text" : "Location List / Create",
                     "src" : "/LocationList.aspx"
                 },
                 {
-                    "title" : "Assign Item Location",
+                    "text" : "Assign Item Location",
                     "src" : "/LocationAssign.aspx?h=off"
                 },
                 {
-                    "title" : "eBay Promotional Sale",
+                    "text" : "eBay Promotional Sale",
                     "src" : "/EBayPromotion.aspx"
                 }
             ]
@@ -77,136 +77,136 @@
             ]
         },
         {
-            "title" : "Time Clock",
+            "text" : "Time Clock",
             "src" : "/TimeClock.aspx?h=off",
             "elements" : [
                 {
-                    "title" : "Time Clock Settings",
+                    "text" : "Time Clock Settings",
                     "src" : "/Settings-tc.aspx"
                 },
                 {
-                    "title" : "Time Clock Settings",
+                    "text" : "Time Clock Settings",
                     "src" : "/Settings-tc.aspx"
                 },
                 {
-                    "title" : "Time Clock Messages",
+                    "text" : "Time Clock Messages",
                     "src" : "/Tasks.aspx?t=msg"
                 }
             ]
         },
         {
-            "title" : "Reports",
+            "text" : "Reports",
             "elements" : [
                 {
-                    "title" : "Time Clock Report",
+                    "text" : "Time Clock Report",
                     "src" : "/TimeClockReport.aspx"
                 },
                 {
-                    "title" : "Fees Report",
+                    "text" : "Fees Report",
                     "src" : "/ReportFee.aspx"
                 },
                 {
-                    "title" : "Defect Report",
+                    "text" : "Defect Report",
                     "src" : "/DefectTracking.aspx"
                 },
                 {
-                    "title" : "Item Create Report",
+                    "text" : "Item Create Report",
                     "src" : "/ReportListings.aspx"
                 }
             ]
         },
         {
-            "title" : "Settings",
+            "text" : "Settings",
             "elements" : [
                 {
-                    "title" : "Profile",
+                    "text" : "Profile",
                     "src" : "/Profile.aspx"
                 },
                 {
-                    "title" : "System",
+                    "text" : "System",
                     "src" : "/Settings1.aspx"
                 },
                 {
-                    "title" : "Clients",
+                    "text" : "Clients",
                     "src" : "/Settings2.aspx"
                 },
                 {
-                    "title" : "Users",
+                    "text" : "Users",
                     "src" : "/Settings3.aspx"
                 },
                 {
-                    "title" : "Shipping",
+                    "text" : "Shipping",
                     "elements" : [
                         {
-                            "title" : "FedEx Settings",
+                            "text" : "FedEx Settings",
                             "src" : "/Settings4b.aspx"
                         },
                         {
-                            "title" : "USPS Settings",
+                            "text" : "USPS Settings",
                             "src" : "/Settings4a.aspx"
                         },
                         {
-                            "title" : "UPS Settings",
+                            "text" : "UPS Settings",
                             "src" : "/Settings5.aspx"
                         }
                     ]
                 },
                 {
-                    "title" : "eBay",
+                    "text" : "eBay",
                     "elements" : [
                         {
-                            "title" : "Account",
+                            "text" : "Account",
                             "src" : "/Settings6.aspx"
                         },
                         {
-                            "title" : "Sites",
+                            "text" : "Sites",
                             "src" : "/Settings7.aspx"
                         },
                         {
-                            "title" : "Shipping Services",
+                            "text" : "Shipping Services",
                             "src" : "/Settings8.aspx"
                         },
                         {
-                            "title" : "Store Catagories",
+                            "text" : "Store Catagories",
                             "src" : "/Settings11.aspx"
                         }
                     ]
                 },
                 {
-                    "title" : "Templates",
+                    "text" : "Templates",
                     "elements" : [
                         {
-                            "title" : "Main Templates",
+                            "text" : "Main Templates",
                             "src" : "/Templates.aspx"
                         },
                         {
-                            "title" : "Description Line Titles",
+                            "text" : "Description Line texts",
                             "src" : "/Settings9.aspx"
                         },
                         {
-                            "title" : "Return Reasons",
+                            "text" : "Return Reasons",
                             "src" : "/Settings10.aspx"
                         },
                         {
-                            "title" : "Message Templates",
+                            "text" : "Message Templates",
                             "src" : "/Settings12.aspx"
                         },
                         {
-                            "title" : "HTML Templates",
+                            "text" : "HTML Templates",
                             "src" : "/Settings13.aspx"
                         },
                         {
-                            "title" : "Image Templates",
+                            "text" : "Image Templates",
                             "src" : "/Settings14.aspx"
                         }
                     ]
                 },
                 {
-                    "title" : "My Colors",
+                    "text" : "My Colors",
                     "src" : "/Settings15.aspx"
                 },
                 {
-                    "title" : "Download Printing Applications",
+                    "text" : "Download Printing Applications",
                     "src" : "/Attachments/PrintLabels.zip"
                 }
             ]

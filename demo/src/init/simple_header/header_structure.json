@@ -8,7 +8,7 @@
     ],
     "right" : [
         {
-            "title" : "Blog",
+            "text" : "Blog",
             "src" : "/path/to/blog.html"
         },
         {

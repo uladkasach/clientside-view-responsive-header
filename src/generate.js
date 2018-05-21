@@ -1,7 +1,10 @@
 require("./styles.css");
 var template = {};
 var style_defaults = {
-    background_color : "#616161", /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+    background_color : { /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+        root :  "#424242",
+        element : "#616161",
+    },
     height : "60px",
 }
 function hex_to_rgb(hex, alpha){ // https://stackoverflow.com/a/28056903/3068233
@@ -45,25 +48,20 @@ var generator = {
 
 
         /*
-            render elements
+            change style of template elements based on user options globally
         */
-        // append elements to each part
-        this.append_elements(left_part, options.structure.left, options.style);
-        this.append_elements(right_part, options.structure.right, options.style);
-
-        // append the menu element to the right part
-        var menu_element = this.convert_element_structure({title:"More", elements:[]}, options.style);
-        menu_element.classList.add('header_menu_element');
-        menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
-        right_part.appendChild(menu_element);
-
+        if(typeof options.style.element_max_width == "string") options.style.element_max_width = parseInt(options.style.element_max_width);
+        if(typeof options.style.element_min_width == "string") options.style.element_min_width = parseInt(options.style.element_min_width);
+        if(typeof options.style.element_max_width == "number") template.header_element.style.maxWidth = options.style.element_max_width + "px";
+        if(typeof options.style.element_min_width == "number") template.header_element.style.minWidth = options.style.element_min_width + "px";
+        template.header_element.style.backgroundColor = style_defaults.background_color.element;
 
         /*
-            change style of dom based on select options
+            change style of header_root dom based on select options
         */
         // define the opacity of the background
         var header_background_opacity = (typeof options.style.opacity == "number")?options.style.opacity : 1;// default to 1
-        var rgba_color = hex_to_rgb(style_defaults.background_color, header_background_opacity);
+        var rgba_color = hex_to_rgb(style_defaults.background_color.root, header_background_opacity);
         dom.style.backgroundColor = rgba_color;
 
         // let user change background color completely
@@ -78,21 +76,35 @@ var generator = {
         if(typeof options.style.font_weight == "string") dom.style.fontWeight = options.style.font_weight;
         if(typeof options.style.font_size == "string") dom.style.fontSize = options.style.font_size;
 
+
+        /*
+            render elements
+        */
+        // append elements to each part
+        this.append_elements(left_part, options.structure.left);
+        this.append_elements(right_part, options.structure.right);
+
+        // append the menu element to the right part
+        var menu_element = this.convert_element_structure({title:"More", elements:[]});
+        menu_element.classList.add('header_menu_element');
+        menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
+        right_part.appendChild(menu_element);
+
         // return DOM
         return dom;
     },
-    append_elements : function(parent_node, elements_outline, style_options){
+    append_elements : function(parent_node, elements_outline){
         elements_outline.forEach(element_structure=>{
-            var element = this.convert_structure_to_element(element_structure, style_options);
+            var element = this.convert_structure_to_element(element_structure);
             parent_node.appendChild(element);
         })
     },
-    convert_structure_to_element : function(structure, style_options){
+    convert_structure_to_element : function(structure){
 
-        if(typeof structure == "object") return this.convert_element_structure(structure, style_options);
-        if(typeof structure == "string") return this.convert_basic_structure(structure, style_options);
+        if(typeof structure == "object") return this.convert_element_structure(structure);
+        if(typeof structure == "string") return this.convert_basic_structure(structure);
     },
-    convert_basic_structure : function(identifier, style_options){
+    convert_basic_structure : function(identifier){
         /*
             if it is a valid basic structure, generate it
         */
@@ -102,9 +114,9 @@ var generator = {
         /*
             otherwise, asume they just wanted the "text" property to be the identifier
         */
-        return this.convert_element_structure({text:identifier}, style_options);
+        return this.convert_element_structure({text:identifier});
     },
-    convert_element_structure : function(structure, style_options){
+    convert_element_structure : function(structure){
         // evaluate structure
         var dropdown_requested = Array.isArray(structure.elements);
 
@@ -148,17 +160,13 @@ var generator = {
             })
         }
 
-        /*
-            manipulate style based on user options globally
-        */
-        if(typeof style_options.element_max_width == "string") element.style.maxWidth = style_options.element_max_width;
-        if(typeof style_options.element_min_width == "string") element.style.minWidth = style_options.element_min_width;
 
         /*
             manipulate style based on structure specific style options
         */
         if(typeof structure.max_width == "string") element.style.maxWidth = structure.max_width;
         if(typeof structure.min_width == "string") element.style.minWidth = structure.min_width;
+
 
         // return built element
         return element;
