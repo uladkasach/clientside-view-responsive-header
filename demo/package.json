@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "clientside-require": "^4.3.0",
-    "clientside-view-responsive-header": "^1.0.0"
+    "clientside-view-loader": "^2.2.0",
+    "clientside-view-responsive-header": "^1.1.0"
   }
 }

@@ -29,9 +29,8 @@ var generator = {
 
         // append the menu element to the right part
         var menu_element = this.convert_element_structure({title:"More", elements:[]});
-        menu_element.className = 'header_menu_element';
+        menu_element.classList.add('header_menu_element');
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
-        menu_element.querySelector(".header_dropdown").style.display=null; // remove dropdown_handler display/hide and let it work on hover as by default
         right_part.appendChild(menu_element);
 
         // return DOM

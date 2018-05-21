@@ -38,9 +38,10 @@ describe('basic', function(){
     it('should be buildable', async function(){
         var view_loader = await window.clientside_require.asynchronous_require("clientside-view-loader");
         var build = await view_loader.load(process.env.src_root);
-        var dom = await build({left:[{"title":"test", "elements":[{"title":"test"}]}], right:[]});
+        var dom = await build({right:[{"title":"test", "elements":[{"title":"test"}]}], left:[]});
     })
 })
+return;
 describe('dropdown_handler', function(){
     it('should determine whether dropdown is open successfully')
     it('should be able to close dropdown')
