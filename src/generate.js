@@ -1,11 +1,30 @@
 require("./styles.css");
 var template = {};
+var style_defaults = {
+    background_color : "#616161", /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+    height : "60px",
+}
+function hex_to_rgb(hex, alpha){ // https://stackoverflow.com/a/28056903/3068233
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    if (alpha) {
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    } else {
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+}
 
 /*
     define generator
 */
 var generator = {
-    generate : function(dom, options){
+    generate : async function(dom, options){
+        // normalize options
+        if(typeof options.structure == "undefined" && typeof options == "object") options = {structure:options}; // assume that if structure is not defined in options that all of options is just structure
+        if(typeof options.structure == "undefined") throw new Error("options must be defined");
+
         // header parts
         var left_part = dom.querySelector(".header_side-left");
         var right_part = dom.querySelector(".header_side-right");
@@ -23,15 +42,36 @@ var generator = {
             },
         }
 
+
+        /*
+            render elements
+        */
         // append elements to each part
-        this.append_elements(left_part, options.left);
-        this.append_elements(right_part, options.right);
+        this.append_elements(left_part, options.structure.left);
+        this.append_elements(right_part, options.structure.right);
 
         // append the menu element to the right part
         var menu_element = this.convert_element_structure({title:"More", elements:[]});
         menu_element.classList.add('header_menu_element');
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
         right_part.appendChild(menu_element);
+
+
+        /*
+            change style of dom based on select options
+        */
+        // define the opacity of the background
+        var header_background_opacity = (typeof options.style.opacity == "number")?options.style.opacity : 1;// default to 1
+        var rgba_color = hex_to_rgb(style_defaults.background_color, header_background_opacity);
+        dom.style.backgroundColor = rgba_color;
+
+        // let user change background color completely
+        if(typeof options.style.background_color == "string") dom.style.backgroundColor = options.style.background_color;
+        if(typeof options.style.backgroundColor == "string") dom.style.backgroundColor = options.style.backgroundColor;
+
+        // let user modify height of header
+        var header_height = (typeof options.style.height)? options.style.height : style_defaults.height;
+        dom.style.height = header_height;
 
         // return DOM
         return dom;
@@ -47,7 +87,16 @@ var generator = {
         if(typeof structure == "string") return this.convert_basic_structure(structure);
     },
     convert_basic_structure : function(identifier){
-        return template.basic_structures[identifier].cloneNode(true);
+        /*
+            if it is a valid basic structure, generate it
+        */
+        var valid_basic_structures = Object.keys(template.basic_structures);
+        if(valid_basic_structures.includes(identifier)) return template.basic_structures[identifier].cloneNode(true);
+
+        /*
+            otherwise, asume they just wanted the "text" property to be the identifier
+        */
+        return this.convert_element_structure({text:identifier});
     },
     convert_element_structure : function(structure){
         // evaluate structure
@@ -71,7 +120,8 @@ var generator = {
             button.href = structure.src;
             button.classList.add("header-clickable_button");
         }
-        if(typeof structure.title == "string") content_holder.textContent = structure.title; // attach title if defined
+        if(typeof structure.id == "string") content_holder.id = structure.id; // attach id if defined
+        if(typeof structure.text == "string") content_holder.textContent = structure.text; // attach text if defined
         if(typeof structure.html == "string") content_holder.innerHTML = structure.html; // insert html if defined
         if(dropdown_requested){
             dropdown_arrow.style.display="flex"; // display dropdown arrow if dropdown requested (hidden by styles.css depending on nesting)
@@ -96,6 +146,7 @@ var generator = {
         return element;
     },
 }
+
 
 /*
     return the bound generate function

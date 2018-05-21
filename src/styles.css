@@ -3,9 +3,7 @@
 
 .header_root{
     font-family: 'Exo', sans-serif;
-    background-color: #424242; /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
     color:white; font-size:14px;
-    height:50px;
 }
 .home_button:hover img {
     animation: wiggle 0.3s 2;
@@ -20,7 +18,6 @@
 /* hide dropdown unless parent is hovered over: */
 .header_dropdown {
     display:none;
-    background-color: #616161; /* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
     position:absolute;
 }
 .header_element:hover .header_dropdown{
