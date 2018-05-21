@@ -39,6 +39,10 @@ Header_Roller.prototype = {
         //      last elements_to_unwrap elements go to menu_element_dropdown
         var unwrapped_elements = this.all_elements.slice(0, elements_to_unwrap);
         var wrapped_elements = this.all_elements.slice(elements_to_unwrap);
+        if(wrapped_elements.length == 1) { // if only wrapping one element, we'd be swapping the element for the more container. just dont wrap it instead
+            unwrapped_elements.push(wrapped_elements[0]); // move it back to the unwrapped elements list
+            wrapped_elements = []; // empty the wrapped elements list
+        }
         unwrapped_elements.forEach((element)=>{
             var dropdown_for_this_element = element.querySelector(".header_dropdown");
             if(dropdown_for_this_element != null) dropdown_for_this_element.style.display=null; // remove open, close styling set by dropdown handler and let it work on hover
