@@ -28,10 +28,10 @@ function hydrate_dropdown_if_valid(potential_dropdown){
     /*
         determine if valid dropdown
     */
-    var dropdown_expander = potential_dropdown.querySelector(':scope > a.header_button .header_element_dropdown_expand');
-    var dropdown_element = potential_dropdown.querySelector(':scope > div.header_dropdown');
-    if(dropdown_element == null) return; // not a valid dropdown
-
+    var children = potential_dropdown.childNodes;
+    if(children.length < 2) return; // not a valid dropdown, dropdown element was not added
+    var dropdown_expander = children[0].querySelector(".header_element_dropdown_expand") // children[0] == ':scope > a.header_button'
+    var dropdown_element = children[1]; // children[1] == ':scope > div.header_dropdown'
 
     /*
         attach dropdown handler

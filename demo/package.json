@@ -11,6 +11,6 @@
   "dependencies": {
     "clientside-require": "^4.3.0",
     "clientside-view-loader": "^2.2.1",
-    "clientside-view-responsive-header": "^1.4.0"
+    "clientside-view-responsive-header": "^1.5.0"
   }
 }
