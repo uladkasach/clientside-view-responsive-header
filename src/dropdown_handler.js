@@ -1,7 +1,7 @@
-
-var Dropdown_Handler = function(expander_button, dropdown_element){
-    this.button = expander_button;
+var Dropdown_Handler = function(dropdown_element, expander_button, hover_down_arrow){
     this.dropdown = dropdown_element;
+    this.button = expander_button;
+    this.arrow = hover_down_arrow;
 }
 Dropdown_Handler.prototype = {
     is_dropdown_showing : function(){
@@ -24,6 +24,16 @@ Dropdown_Handler.prototype = {
         this.button.querySelector(".dropdown_more").style.display = "block"; // show "+" if hiding
         this.button.querySelector(".dropdown_close").style.display = "none"; // hide "x" if hiding
         this.dropdown.style.display="none"; // hide the dropdown contents
+    },
+    update : function(){
+        // check how many children the dropdown has now. update is called when this changes.
+        // if zero children exist, remove dropdown from parent.
+        var child_count = this.dropdown.children.length;
+        if(child_count == 0){
+            this.dropdown.remove(); // remove dropdown element
+            this.button.style.display = "none"; // hide the dropdown button
+            this.arrow.style.display = "none"; // hide the dropdown arrow
+        }
     }
 }
 

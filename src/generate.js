@@ -123,6 +123,7 @@ var generator = {
 
         // define elements in template
         var element = template.header_element.cloneNode(true);
+        if(typeof structure.id == "string") element.id = structure.id; // attach id if defined to element
 
         // determine whether to hover
         if(structure.no_hover === true) element.classList.add("header_element_no_hover");
@@ -139,7 +140,6 @@ var generator = {
             button.href = structure.src;
             button.classList.add("header-clickable_button");
         }
-        if(typeof structure.id == "string") content_holder.id = structure.id; // attach id if defined
         if(typeof structure.text == "string") content_holder.textContent = structure.text; // attach text if defined
         if(typeof structure.html == "string") content_holder.innerHTML = structure.html; // insert html if defined
         if(dropdown_requested){

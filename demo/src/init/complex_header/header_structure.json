@@ -85,10 +85,6 @@
                     "src" : "/Settings-tc.aspx"
                 },
                 {
-                    "text" : "Time Clock Settings",
-                    "src" : "/Settings-tc.aspx"
-                },
-                {
                     "text" : "Time Clock Messages",
                     "src" : "/Tasks.aspx?t=msg"
                 }

@@ -37,3 +37,12 @@ creates this result:
 
 ### more examples
 please see the `demo` directory for more examples and usage documentation
+
+# Additional Functionality
+Each element is provided with a `clean_remove()` function. By retreiving the DOM node of a `.header_element`, you can remove the element from the header dynamically with the `clean_remove()` function. The `clean_remove()` function will automatically consider the amount of children in a dropdown and remove the dropdown if required.
+
+For example:
+
+```
+    document.querySelector(".header_element#identifier_for_target_element").clean_remove();
+```

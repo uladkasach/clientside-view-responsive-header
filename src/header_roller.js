@@ -54,7 +54,7 @@ Header_Roller.prototype = {
         })
         wrapped_elements.forEach((element)=>{
             var dropdown_for_this_element = element.querySelector(".header_dropdown");
-            if(dropdown_for_this_element != null) dropdown_for_this_element.handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (becomes wrapped)
+            if(dropdown_for_this_element != null) dropdown_for_this_element.dropdown_handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (becomes wrapped)
             this.holders.menu_dropdown.appendChild(element);
         })
 
