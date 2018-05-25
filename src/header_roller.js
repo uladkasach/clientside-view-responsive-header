@@ -1,7 +1,7 @@
 var Header_Roller = function(all_elements, width_per_element, content_holder, menu_element, alternative_holder){
     this.all_elements = all_elements;
     this.menu_element = menu_element;
-    this.width_per_element = width_per_element;
+    this.width_per_element = parseInt(width_per_element);
     this.holders = {
         alternative : alternative_holder, // used to determine how much space is used in the header other than this content
         content : content_holder,

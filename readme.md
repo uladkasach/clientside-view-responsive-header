@@ -46,3 +46,7 @@ For example:
 ```
     document.querySelector(".header_element#identifier_for_target_element").clean_remove();
 ```
+or
+```
+    document.getElementById("identifier_for_target_element").clean_remove()
+```
