@@ -89,6 +89,7 @@ var generator = {
         var menu_element = this.convert_element_structure({title:"More", elements:[]});
         menu_element.classList.add('header_menu_element');
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing
+        menu_element.style.display = "none";
         right_part.appendChild(menu_element);
 
         // return DOM
