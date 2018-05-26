@@ -22,7 +22,7 @@ var hydrate = function(element, options){
     */
     element.show = utility_methods.show.bind(element);
     element.hide = utility_methods.hide.bind(element);
-    element.clean_remove = utility_methods.clean_remove.bind(element);
+    element.is_visible = utility_methods.is_visible.bind(element);
 
     // return the hydrated dom
     return element;
@@ -39,11 +39,8 @@ var utility_methods = {
         var dropdown_handler_exists = (this.parentNode!=null && typeof this.parentNode.dropdown_handler == "object");
         if(dropdown_handler_exists) this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
     },
-    clean_remove : function(){
-        var parent = this.parentNode; // define parent node
-        this.remove(); // remove self from DOM
-        var dropdown_handler_exists = (parent!=null && typeof parent.dropdown_handler == "object");
-        if(dropdown_handler_exists)  parent.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
+    is_visible : function(){
+        return (this.style.display!="none");
     }
 }
 

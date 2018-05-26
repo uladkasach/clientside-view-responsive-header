@@ -51,13 +51,30 @@ Header_Roller.prototype = {
     unwrap_only_x_elements : function(elements_to_unwrap){
         // recreate positions each update,
         //      first elements_to_unwrap elements go to always_open
+        //          - if it was hidden, then dont count it as an "uwrappped_element" but still attach it
         //      last elements_to_unwrap elements go to menu_element_dropdown
-        var unwrapped_elements = this.all_elements.slice(0, elements_to_unwrap);
-        var wrapped_elements = this.all_elements.slice(elements_to_unwrap);
-        if(wrapped_elements.length == 1) { // if only wrapping one element, we'd be swapping the element for the more container. just dont wrap it instead
+        //          - if it was hidden, then dont count as an unwrapped element but still attach it
+        var unwrapped_elements_count = 0;
+        var unwrapped_elements = [];
+        var wrapped_elements_count = 0;
+        var wrapped_elements = [];
+        for(var i=0; i < this.all_elements.length; i++){
+            var element = this.all_elements[i];
+            if(unwrapped_elements_count < elements_to_unwrap){
+                unwrapped_elements.push(element);
+                if(element.is_visible()) unwrapped_elements_count += 1;
+            } else {
+                wrapped_elements.push(element);
+                if(element.is_visible()) wrapped_elements_count += 1;
+            }
+        }
+        if(wrapped_elements_count == 1) { // if only wrapping one element, we'd be swapping the element for the more container. just dont wrap it instead
             unwrapped_elements.push(wrapped_elements[0]); // move it back to the unwrapped elements list
             wrapped_elements = []; // empty the wrapped elements list
+            wrapped_elements_count = 0; // empty the wrap count
         }
+
+        // wrap the elements
         unwrapped_elements.forEach((element)=>{
             element.dropdown_handler.auto_dropdown(); // let dropdown state be determined automatically by hover status (because unwrapped)
             this.holders.content.appendChild(element);
@@ -71,14 +88,14 @@ Header_Roller.prototype = {
         this.holders.content.appendChild(this.menu_element);
 
         // if unwrapped_elements = 0, then change menu element title to "Menu";
-        if(unwrapped_elements.length == 0){
+        if(unwrapped_elements_count == 0){
             this.menu_element.querySelector(".header_element_content_holder").textContent = "Menu";
         } else {
             this.menu_element.querySelector(".header_element_content_holder").textContent = "More";
         }
 
         // if wrapped_elements = 0, then hide menu element
-        if(wrapped_elements.length == 0){
+        if(wrapped_elements_count == 0){
             this.menu_element.style.display = "none";
         } else {
             this.menu_element.style.display = "block";

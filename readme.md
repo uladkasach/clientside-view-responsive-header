@@ -39,14 +39,14 @@ creates this result:
 please see the `demo` directory for more examples and usage documentation
 
 # Additional Functionality
-Each element is provided with a `clean_remove()` function. By retreiving the DOM node of a `.header_element`, you can remove the element from the header dynamically with the `clean_remove()` function. The `clean_remove()` function will automatically consider the amount of children in a dropdown and remove the dropdown if required.
+Each element is provided with a `hide()` and `remove()` method. By retreiving the DOM node of a `.header_element`, you can hide the element from the header dynamically with the `hide()` method. The `hide()` method will ensure that the dropdowns reflect whether they have children left or not and that the responsive wrapping functionality is not broken.  
 
 For example:
 
 ```
-    document.querySelector(".header_element#identifier_for_target_element").clean_remove();
+    document.querySelector(".header_element#identifier_for_target_element").hide();
 ```
 or
 ```
-    document.getElementById("identifier_for_target_element").clean_remove()
+    document.getElementById("identifier_for_target_element").hide()
 ```
