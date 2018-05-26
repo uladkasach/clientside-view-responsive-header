@@ -1,8 +1,8 @@
 {
   "name": "clientside-view-responsive-header",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "description": "a responsive, reusable header element. build a responsive, multilayer header with only a json file.",
-  "components" : "src/header",
+  "components": "src/header",
   "directories": {
     "test": "test"
   },
@@ -32,11 +32,11 @@
   },
   "homepage": "https://github.com/uladkasach/clientside-view-responsive-header#readme",
   "dependencies": {
-    "clientside-require": "^4.3.0",
-    "clientside-view-loader": "^2.2.0"
+    "clientside-require": "^4.5.1",
+    "clientside-view-loader": "^2.7.3"
   },
   "devDependencies": {
-    "jsdom": "^11.10.0",
+    "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
     "xmlhttprequest": "^1.8.0"
   }

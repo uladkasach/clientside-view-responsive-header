@@ -1,3 +1,5 @@
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
 var Header_Roller = function(all_elements, width_per_element, content_holder, menu_element, alternative_holder){
     this.all_elements = all_elements;
     this.menu_element = menu_element;
@@ -30,7 +32,10 @@ Header_Roller.prototype = {
     determine_elements_to_unwrap : function(){
         var browser_width = this.target_window.document.documentElement.clientWidth;
         var alternative_width = this.holders.alternative.clientWidth;
-        if(alternative_width == 0) alternative_width = this.holders.alternative.querySelectorAll(".header_element").length * this.width_per_element; // if not rendered yet, just approximate
+        if(alternative_width == 0){
+            alternative_width = this.holders.alternative.querySelectorAll(".header_element").length * this.width_per_element; // if not rendered yet, just approximate
+            sleep(100).then(()=>this.update_header_wrapping()); // start async event to sleep and double check soon, since only approximating for now
+        }
         var availible_width = browser_width - alternative_width;
         var elements_supportable = Math.floor(availible_width/this.width_per_element);
         var element_space_availible = elements_supportable - 1; // -1 for the "More"/"Menu" element

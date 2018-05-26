@@ -26,7 +26,8 @@ var generator = {
         await this.append_elements(left_part, options.structure.left, options.style.element);
 
         // append the menu element to the right part
-        var menu_element = await create_header_element({title:"More", elements:[]});
+        var styled_menu_structure = this.append_default_style({title:"More", elements:[]}, options.style.element);
+        var menu_element = await create_header_element(styled_menu_structure);
         menu_element.classList.add('header_menu_element');
         menu_element.querySelector(".header_dropdown").style.right=0; // ensure does not go outside of page bounds, even if overflowing; TODO - find a better solution
         menu_element.style.display = "none";

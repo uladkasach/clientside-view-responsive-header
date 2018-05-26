@@ -6,7 +6,7 @@ module.exports = async function(element, structure){
     */
     // extract style from structure for a specific set of properties
     var style = {};
-    var style_properties = ["max_width", "min_width"];
+    var style_properties = ["max_width", "min_width", "background_color"];
     style_properties.forEach((prop)=>{
         if(typeof structure[prop] != "undefined") style[prop] = structure[prop];
     })
@@ -53,8 +53,9 @@ module.exports = async function(element, structure){
         Style DOM
     */
     // apply style
-    if(typeof structure.max_width == "number") element.style.maxWidth = structure.max_width + "px";
-    if(typeof structure.min_width == "number") element.style.minWidth = structure.min_width + "px";
+    if(typeof style.max_width == "number") element.style.maxWidth = style.max_width + "px";
+    if(typeof style.min_width == "number") element.style.minWidth = style.min_width + "px";
+    if(typeof style.background_color == "string") dropdown.style.backgroundColor = style.background_color; // note that we color the dropdown
 
     // return built element
     return element;
