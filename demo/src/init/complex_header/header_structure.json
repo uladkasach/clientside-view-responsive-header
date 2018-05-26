@@ -70,6 +70,7 @@
             "src" : "/Messages.aspx",
             "elements" : [
                 {
+                    "id" : "header-tasks",
                     "html" : "Tasks ( <span id = 'tasks_count'>**</span> )",
                     "src" : "/Tasks.aspx"
                 }

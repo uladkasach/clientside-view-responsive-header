@@ -46,12 +46,14 @@ Dropdown_Handler.prototype = {
         // check if visible child exists
         var children = Array.from(this.dropdown.children);
         var visible_child_exists = false;
+        console.log("here i am!");
         for(var i = 0; i < children.length; i++){
             var child = children[i];
             if(child.style.display == "none") continue;
             visible_child_exists = true;
             break;
         }
+        console.log(visible_child_exists);
 
         // update ui based on state of child visibility
         if(visible_child_exists){ // if visible child exists, show dropdown UI

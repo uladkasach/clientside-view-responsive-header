@@ -31,16 +31,20 @@ var hydrate = function(element, options){
 var utility_methods = {
     show : function(){
         this.style.display = "block"; // update visibility
-        if(this.parentNode=="object" && this.parentNode.dropdown_handler == "object") this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
+        var dropdown_handler_exists = (this.parentNode!=null && typeof this.parentNode.dropdown_handler == "object");
+        if(dropdown_handler_exists) this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
     },
     hide : function(){
+        console.log("hiding element!");
         this.style.display = "none"; // update visibility
-        if(this.parentNode=="object" && this.parentNode.dropdown_handler == "object") this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
+        var dropdown_handler_exists = (this.parentNode!=null && typeof this.parentNode.dropdown_handler == "object");
+        if(dropdown_handler_exists) this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
     },
     clean_remove : function(){
         var parent = this.parentNode; // define parent node
         this.remove(); // remove self from DOM
-        if(this.parentNode=="object" && this.parentNode.dropdown_handler == "object") parent.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
+        var dropdown_handler_exists = (parent!=null && typeof parent.dropdown_handler == "object");
+        if(dropdown_handler_exists)  parent.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
     }
 }
 
