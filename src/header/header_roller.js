@@ -35,6 +35,17 @@ Header_Roller.prototype = {
         var elements_supportable = Math.floor(availible_width/this.width_per_element);
         var element_space_availible = elements_supportable - 1; // -1 for the "More"/"Menu" element
         if(element_space_availible < 0) element_space_availible = 0;
+
+        // for dev purposes
+        var analysis = {
+            width_per_element : this.width_per_element,
+            browser_width : browser_width,
+            alternative_width : alternative_width,
+            availible_width : availible_width,
+            elements_supportable : elements_supportable,
+            element_space_availible : element_space_availible,
+        }
+
         return element_space_availible;
     },
     unwrap_only_x_elements : function(elements_to_unwrap){
@@ -48,11 +59,11 @@ Header_Roller.prototype = {
             wrapped_elements = []; // empty the wrapped elements list
         }
         unwrapped_elements.forEach((element)=>{
-            element.dropdown_handler.auto_content(); // let dropdown state be determined automatically by hover status (because unwrapped)
+            element.dropdown_handler.auto_dropdown(); // let dropdown state be determined automatically by hover status (because unwrapped)
             this.holders.content.appendChild(element);
         })
         wrapped_elements.forEach((element)=>{
-            element.dropdown_handler.hide_content(); // close the dropdown as soon as it goes into the dropdown (because wrapped)
+            element.dropdown_handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (because wrapped)
             this.holders.menu_dropdown.appendChild(element);
         })
 
@@ -71,6 +82,8 @@ Header_Roller.prototype = {
             this.menu_element.style.display = "none";
         } else {
             this.menu_element.style.display = "block";
+            this.menu_element.dropdown_handler.update(); // update dropdown handler to show that it has dropdown elements
+            this.menu_element.dropdown_handler.auto_dropdown(); // ensure that content is shown based on hover
         }
     },
 }

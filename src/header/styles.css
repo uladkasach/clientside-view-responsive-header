@@ -12,63 +12,6 @@
 }
 
 
-/* hide dropdown unless parent is hovered over: */
-.header_dropdown {
-    display:none;
-    position:absolute;
-    background-color:#616161;
-}
-.header_element:hover .header_dropdown{
-    display:flex;
-    flex-flow: column;
-}
-
-/* nested dropdown */
-.header_element .header_element .header_dropdown{ /* if dropdown is nested under two elements, dont fold down and always show */
-    position:relative;
-    display:block;
-}
-.header_element .header_element .header_dropdown{
-    padding-left:15px;
-}
-.header_element .header_element .header_element_dropdown_arrow-overwrite {
-    display:none; /* dont show the subdropdown arrows */
-}
-
-/* hide the expand button untill it is already nested in atleast one dropdown */
-.header_element .header_element_dropdown_expand-overwrite {
-    display:none; /* show only if nested */
-}
-.header_element .header_element .header_element_dropdown_expand-overwrite {
-    display:block; /* show only if nested */
-}
-
-
-/* style elements */
-.header_element {
-    flex:1;
-    max-width:180px;
-    min-width:160px;
-    text-align:left;
-}
-.header_dropdown .header_element { /* aka header_dropdown_element */
-    flex:1;
-    font-size:13px;
-    max-width:300px;
-
-    min-height:40px;
-}
-.header_button {
-    min-height:40px;
-}
-.header_element:not(.header_element_no_hover):hover {
-    background-color:rgba(251, 247, 247, 0.1);
-}
-.header_element_expand_button:hover {
-    background-color:rgba(251, 247, 247, 0.1);
-    cursor: pointer;
-}
-
 
 /*
     header button

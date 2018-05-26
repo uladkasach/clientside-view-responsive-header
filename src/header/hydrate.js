@@ -12,7 +12,7 @@ var hydrate = function(dom, options){
     var right_part = dom.querySelector(".header_side-right");
     var right_elements = dom.querySelectorAll(".header_side-right > .header_element:not(.header_menu_element)");
     right_elements = Array.from(right_elements); // convert NodeList to array
-    var header_roller = new Header_Roller(right_elements, options.style.element_min_width, right_part, menu_element, left_part);
+    var header_roller = new Header_Roller(right_elements, options.style.element.min_width, right_part, menu_element, left_part);
     header_roller.listen();
     dom.header_roller = header_roller;
 

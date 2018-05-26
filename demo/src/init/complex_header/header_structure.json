@@ -51,7 +51,6 @@
                     "text" : "Quick Search",
                     "src" : "/StockUPC.aspx?h=off"
                 },
-                "line",
                 {
                     "text" : "Location List / Create",
                     "src" : "/LocationList.aspx"
