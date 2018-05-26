@@ -48,13 +48,11 @@ Header_Roller.prototype = {
             wrapped_elements = []; // empty the wrapped elements list
         }
         unwrapped_elements.forEach((element)=>{
-            var dropdown_for_this_element = element.querySelector(".header_dropdown");
-            if(dropdown_for_this_element != null) dropdown_for_this_element.style.display=null; // remove open, close styling set by dropdown handler and let it work on hover
+            element.dropdown_handler.auto_content(); // let dropdown state be determined automatically by hover status (because unwrapped)
             this.holders.content.appendChild(element);
         })
         wrapped_elements.forEach((element)=>{
-            var dropdown_for_this_element = element.querySelector(".header_dropdown");
-            if(dropdown_for_this_element != null) dropdown_for_this_element.dropdown_handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (becomes wrapped)
+            element.dropdown_handler.hide_content(); // close the dropdown as soon as it goes into the dropdown (because wrapped)
             this.holders.menu_dropdown.appendChild(element);
         })
 
