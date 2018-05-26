@@ -35,7 +35,6 @@ var utility_methods = {
         if(dropdown_handler_exists) this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
     },
     hide : function(){
-        console.log("hiding element!");
         this.style.display = "none"; // update visibility
         var dropdown_handler_exists = (this.parentNode!=null && typeof this.parentNode.dropdown_handler == "object");
         if(dropdown_handler_exists) this.parentNode.dropdown_handler.update(); // ensure parent.dropdown updates; unless is root element, in which case parent does not have dropdown
