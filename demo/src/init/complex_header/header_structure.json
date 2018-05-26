@@ -51,7 +51,6 @@
                     "text" : "Quick Search",
                     "src" : "/StockUPC.aspx?h=off"
                 },
-                "line",
                 {
                     "text" : "Location List / Create",
                     "src" : "/LocationList.aspx"
@@ -71,6 +70,7 @@
             "src" : "/Messages.aspx",
             "elements" : [
                 {
+                    "id" : "header-tasks",
                     "html" : "Tasks ( <span id = 'tasks_count'>**</span> )",
                     "src" : "/Tasks.aspx"
                 }

@@ -8,6 +8,7 @@
     ],
     "right" : [
         {
+            "id" : "header-blog",
             "text" : "Blog",
             "src" : "/path/to/blog.html"
         },

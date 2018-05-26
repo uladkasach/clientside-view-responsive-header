@@ -1,0 +1,52 @@
+.header_root{
+    color:white; font-size:14px;
+    background-color: #424242;
+}
+.home_button:hover img {
+    animation: wiggle 0.3s 2;
+}
+@keyframes wiggle {
+	0% {transform:rotate(4deg);}
+	50% {transform:rotate(-4deg);}
+	100% {transform:rotate(4deg);}
+}
+
+
+
+/*
+    header button
+*/
+.header-clickable_button:hover {
+    cursor:pointer;
+    background-color:rgba(251, 247, 247, 0.1);
+}
+a.header_button{ /* remove default anchor styles */
+    color:inherit;
+    text-decoration:inherit;
+}
+.header_side{
+    height:100%;
+}
+
+
+/* arrow */
+arrow {
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-top:-3px;
+}
+arrow.drop {
+    /* L shape */
+}
+arrow.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+
+/* dividing line - basic element */
+header_dividing_line_element-color{
+    border-top:1px solid rgba(251, 247, 247, 0.1);
+}

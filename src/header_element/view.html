@@ -1,0 +1,24 @@
+<div class = 'header_element' style = 'position:relative;'>
+    <a class = 'header_button' style = 'display:flex; flex:1; height:100%;'>
+        <div style = 'margin:auto 0; display:flex; padding:0px 10px; width:100%;'>
+            <div class='header_element_dropdown_arrow' style = 'display:none;'> <!-- programatically changes to `display:flex;` when elements for dropdown exist -->
+                <div class='header_element_dropdown_arrow-overwrite' style = 'margin:auto 0px; padding-right:7px;'> <!-- overwrite used by css stylesheet to hide based on nesting -->
+                    <arrow class='down'></arrow>
+                </div>
+            </div>
+            <div style = 'margin:auto 0px; display:flex;'>
+                <div style = 'display:flex; padding:5px;'>
+                    <div class = 'header_element_content_holder' style = 'margin:auto;'></div>
+                </div>
+            </div>
+            <div class='header_element_dropdown_expand header_element_expand_button' style = 'display:none; margin-left:auto; margin-right:-10px;'> <!-- programatically changes to `display:flex;` when elements for dropdown exist -->
+                <div class='header_element_dropdown_expand-overwrite ' style = 'margin:auto 0px;  padding:15px;'> <!-- overwrite used by css stylesheet to hide based on nesting -->
+                    <span class='dropdown_more'>+</span>
+                    <span class='dropdown_close'>x</span>
+                </div>
+            </div>
+        </div>
+    </a>
+    <div class = 'header_dropdown' style = ''>
+    </div>
+</div>
