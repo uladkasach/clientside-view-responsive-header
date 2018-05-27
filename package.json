@@ -1,6 +1,6 @@
 {
   "name": "clientside-view-responsive-header",
-  "version": "1.7.6",
+  "version": "1.7.7",
   "description": "a responsive, reusable header element. build a responsive, multilayer header with only a json file.",
   "components": "src/header",
   "directories": {

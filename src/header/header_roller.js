@@ -79,13 +79,16 @@ Header_Roller.prototype = {
             wrapped_elements_count = 0; // empty the wrap count
         }
 
-        // wrap the elements
+        // unwrap the elements
         unwrapped_elements.forEach((element)=>{
             element.dropdown_handler.auto_dropdown(); // let dropdown state be determined automatically by hover status (because unwrapped)
+            element.unwrap(); // handles max-width constraints for nested dropdowns
             this.holders.content.appendChild(element);
+            // wrap the elements
         })
         wrapped_elements.forEach((element)=>{
             element.dropdown_handler.hide_dropdown(); // close the dropdown as soon as it goes into the dropdown (because wrapped)
+            element.wrap(); // handles max-width constraints for nested dropdowns
             this.holders.menu_dropdown.appendChild(element);
         })
 

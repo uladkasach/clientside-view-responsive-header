@@ -24,6 +24,19 @@ var hydrate = function(element, options){
     element.hide = utility_methods.hide.bind(element);
     element.is_visible = utility_methods.is_visible.bind(element);
 
+    /*
+        define dropdown max width
+    */
+    element.style_traits = {
+        max : element.style.maxWidth,
+    }
+
+    /*
+        meta utility methods (used by header program logic)
+    */
+    element.wrap = utility_methods.wrap.bind(element);
+    element.unwrap = utility_methods.unwrap.bind(element);
+
     // return the hydrated dom
     return element;
 }
@@ -41,6 +54,14 @@ var utility_methods = {
     },
     is_visible : function(){
         return (this.style.display!="none");
+    },
+    wrap : function(){
+        // remove max width
+        this.style.maxWidth = null;
+    },
+    unwrap : function(){
+        // re-apply original max width
+        this.style.maxWidth = this.style_traits.max;
     }
 }
 

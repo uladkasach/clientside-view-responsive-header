@@ -34,10 +34,10 @@ a.header_button{ /* remove default anchor styles */
     display:none;
     position:absolute;
     background-color:#616161;
+    overflow:hidden;
 }
 .header_element:hover .header_dropdown{
-    display:flex;
-    flex-flow: column;
+    display:block;
 }
 
 /* nested dropdown */
@@ -71,8 +71,6 @@ a.header_button{ /* remove default anchor styles */
 .header_dropdown .header_element { /* aka header_dropdown_element */
     flex:1;
     font-size:13px;
-    max-width:300px;
-
     min-height:40px;
 }
 .header_button {
