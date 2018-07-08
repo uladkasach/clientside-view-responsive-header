@@ -9,7 +9,7 @@ var Header_Roller = function(all_elements, width_per_element, content_holder, me
         content : content_holder,
         menu_dropdown : menu_element.querySelector(".header_dropdown"),
     };
-    this.target_window = window.root_window; // by default its the root document
+    this.target_window = env.root_window; // by default its the root document
 }
 Header_Roller.prototype = {
     listen : function(){ //attach listener
